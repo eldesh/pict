@@ -3,7 +3,9 @@
 # variables used to generate a source snapshot of the GIT repo
 COMMIT=$(shell git log --pretty=format:'%H' -n 1)
 SHORT_COMMIT=$(shell git log --pretty=format:'%h' -n 1)
-CXXFLAGS=-fPIC -pipe -std=c++11 -O2 -Iapi
+CXXFLAGS := -fPIC -pipe -std=c++11 -g -O2 -Iapi
+CXXFLAGS += -fno-omit-frame-pointer -fvisibility=hidden -g -pedantic
+CXXFLAGS += -Wall -Werror -Wno-sign-compare -Wno-unused-but-set-variable -Wno-unused-variable
 TARGET=pict
 TARGET_LIB_A=libpict.a
 TARGET_LIB_SO=libpict.so
@@ -29,7 +31,7 @@ $(TARGET_LIB_A): $(OBJS)
 $(TARGET_LIB_SO): $(OBJS)
 	$(CXX) -fPIC -shared $^ -o $(TARGET_LIB_SO)
 
-test: $(TARGET)
+test: $(TARGET) test/test.pl
 	cd test; perl test.pl ../$(TARGET) rel.log
 
 clean:
