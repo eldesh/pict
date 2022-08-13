@@ -40,7 +40,7 @@ void __cdecl wmain()
     // Let's try with only one model for now,  pairwise is default
     //
 
-    PICT_HANDLE model = PictCreateModel();
+    PICT_HANDLE model = PictCreateModel(PICT_DEFAULT_RANDOM_SEED);
     checkNull( task );
     checkNull( model );
 
@@ -72,16 +72,16 @@ void __cdecl wmain()
     PICT_HANDLE p1 = PictAddParameter( model, 4, PAIRWISE, weights );
     checkNull( p1 );
 
-    PICT_HANDLE p2 = PictAddParameter( model, 3, PAIRWISE );
+    PICT_HANDLE p2 = PictAddParameter( model, 3, PAIRWISE, nullptr );
     checkNull( p2 );
 
-    PICT_HANDLE p3 = PictAddParameter( model, 5, PAIRWISE );
+    PICT_HANDLE p3 = PictAddParameter( model, 5, PAIRWISE, nullptr );
     checkNull( p3 );
 
-    PICT_HANDLE p4 = PictAddParameter( model, 2, PAIRWISE );
+    PICT_HANDLE p4 = PictAddParameter( model, 2, PAIRWISE, nullptr );
     checkNull( p4 );
 
-    PICT_HANDLE p5 = PictAddParameter( model, 4, PAIRWISE );
+    PICT_HANDLE p5 = PictAddParameter( model, 4, PAIRWISE, nullptr );
     checkNull( p5 );
 
     //
@@ -238,4 +238,4 @@ cleanup:
     {
         PictDeleteTask( task );
     }
-};
+}
