@@ -306,7 +306,7 @@ PICT_HANDLE
 API_SPEC
 PictCreateModel
     (
-    IN OPT unsigned int randomSeed = PICT_DEFAULT_RANDOM_SEED
+    IN OPT unsigned int randomSeed
     );
 
 // ////////////////////////////////////////////////////////////////////////////
@@ -331,8 +331,8 @@ PictAddParameter
     (
     IN     const PICT_HANDLE model,
     IN     size_t            valueCount,
-    IN OPT unsigned int      order          = PICT_PAIRWISE_GENERATION,
-    IN OPT unsigned int      valueWeights[] = nullptr
+    IN OPT unsigned int      order,
+    IN OPT unsigned int      valueWeights[]
     );
 
 //
@@ -367,7 +367,7 @@ PictAttachChildModel
     (
     IN     const PICT_HANDLE modelParent,
     IN     const PICT_HANDLE modelChild,
-    IN OPT unsigned int      order = PICT_PAIRWISE_GENERATION
+    IN OPT unsigned int      order
     );
 
 // ////////////////////////////////////////////////////////////////////////////
