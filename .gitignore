@@ -19,3 +19,7 @@
 *.VC.*db*
 pict
 *.o
+libpict.a
+libpict.so
+zig-cache/
+zig-out/
