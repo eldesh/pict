@@ -62,7 +62,6 @@ else()
       -fPIC # Position-independent code: necessary for static libraries that are linked in dynamic libraries
       -pipe
       -fno-omit-frame-pointer
-      -fvisibility=hidden # By default, hide symbols on ELF binaries
       -g # add debug symbols for build pdb
       -pedantic
       -Wall
@@ -98,6 +97,8 @@ endif()
 if(WIN32)
   add_subdirectory(api-usage)
   add_subdirectory(clidll-usage)
+else()
+  add_subdirectory(api-usage)
 endif()
 
 if(WIN32)

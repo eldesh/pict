@@ -10,7 +10,7 @@ using namespace std;
     if( nullptr == x )                                    \
     {                                                     \
         wcout << L"Error: Out of memory" << endl;         \
-        goto cleanup;                                     \
+        /*goto cleanup;*/                                     \
     }
 
 #define checkRetCode( x )                                 \
@@ -20,16 +20,20 @@ using namespace std;
         break;                                            \
     case PICT_OUT_OF_MEMORY:                              \
         wcout << L"Error: Out of memory" << endl;         \
-        goto cleanup;                                     \
+        /*goto cleanup;*/                                     \
     case PICT_GENERATION_ERROR:                           \
         wcout << L"Error: Internal engine error" << endl; \
-        goto cleanup;                                     \
+        /*goto cleanup;*/                                     \
     default:                                              \
         assert( ! L"Unexpected error code" );             \
-        goto cleanup;                                     \
+        /*goto cleanup;*/                                     \
     }
 
+#if defined(__WIN32)
 void __cdecl wmain()
+#else
+int main(int argc, char * argv[])
+#endif
 {
     PICT_RET_CODE ret = PICT_SUCCESS;
 
@@ -227,7 +231,7 @@ void __cdecl wmain()
 
     PictFreeResultBuffer( row );
 
-cleanup:
+//cleanup:
 
     if( model != nullptr )
     {
